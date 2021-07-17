@@ -1,32 +1,38 @@
-import axios from 'axios';
+//import axios from 'axios';
 
-const FUNCIONARIO_API_BASE_URL = "http://localhost:8080/api/v1/funcionarios";
+import http from "../http-common";
+
+
+
 
 class FuncionarioService {
 
     buscarFuncionarios() {
 
-        return axios.get(FUNCIONARIO_API_BASE_URL);
+        return http.get("/funcionarios");
+        
     }
 
     criarFuncionario(funcionario) {
 
-        return axios.post(FUNCIONARIO_API_BASE_URL, funcionario);
+        return http.post("/funcionarios", funcionario);
+        //return http.post("/tutorials", data);
     }
 
-    buscarFuncionarioPorId(funcionarioId) {
+    buscarFuncionarioPorId(id) {
 
-        return axios.get(FUNCIONARIO_API_BASE_URL + '/' + funcionarioId);
+        //return http.get(FUNCIONARIO_API_BASE_URL + '/' + funcionarioId);
+        return http.get(`/funcionarios/${id}`);
     }
 
-    alterarFuncionario(funcionario, funcionarioId) {
+    alterarFuncionario(funcionario, id) {
 
-        return axios.put(FUNCIONARIO_API_BASE_URL + '/' + funcionarioId, funcionario) ;
+        return http.put(`/funcionarios/${id}`, funcionario);
     }
 
-    deletarFuncionario(funcionarioId) {
+    deletarFuncionario(id) {
 
-        return axios.delete(FUNCIONARIO_API_BASE_URL + '/' + funcionarioId);
+        return http.delete(`/funcionarios/${id}`);
     }
 }
 

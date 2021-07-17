@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FuncionarioService from '../services/FuncionarioService'
+import FuncionarioService from '../services/FuncionarioService';
 
 class CriarFuncionarioComponent extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class CriarFuncionarioComponent extends Component {
         this.salvarOuAlterarFuncionario = this.salvarOuAlterarFuncionario.bind(this);
     }
 
-    componentDidMount() {
+    componentDidMount = async () => {
         if (this.state.id === '_add') {
             return
         } else {
@@ -47,10 +47,10 @@ class CriarFuncionarioComponent extends Component {
           FuncionarioService.criarFuncionario(funcionario).then( res => {
               this.props.history.push('/funcionarios');
           });
-      } else {
-          FuncionarioService.alterarFuncionario(funcionario, this.state.id).then( res => {
-              this.props.history.push('/funcionarios');
-          });
+      } else {  
+        //   FuncionarioService.alterarFuncionario(funcionario, this.state.id).then( res => {
+        //       this.props.history.push('/funcionarios');
+        //   });
       }
     }
 

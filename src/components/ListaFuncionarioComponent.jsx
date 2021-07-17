@@ -1,25 +1,20 @@
-import React, { Component} from 'react';
-import FuncionarioService from '../services/FuncionarioService';
+import React, { Component} from 'react'
+import FuncionarioService from '../services/FuncionarioService'
 
 
 class ListaFuncionarioComponent extends Component {
-    
     constructor(props) {
-
         super(props)
-
         this.state = {
             funcionarios: []
         }
-
         this.addFuncionario = this.addFuncionario(this);
         this.editFuncionario = this.editFuncionario(this);
         this.deletarFuncionario = this.deletarFuncionario(this);
     }
-
     deletarFuncionario(id) {
         FuncionarioService.deletarFuncionario(id).then( res => {
-            this.setState({ funcionarios: this.state.funcionarios.filter(funcionario => funcionario.id !== id)})
+            this.setState({ funcionarios: this.state.funcionarios.filter(funcionario => funcionario.id !== id)});
         });
     }
 
